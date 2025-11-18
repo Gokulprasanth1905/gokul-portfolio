@@ -1,0 +1,419 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Gokul Prasanth</title>
+    <!-- Link to external CSS file using Django static tag -->
+    <link rel="stylesheet" href="{% static 'main_app/style.css' %}">
+    <!-- Tailwind CSS CDN for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Anchor target for Home/Top -->
+    <div id="top"></div>
+
+    <!-- Header / Navigation -->
+    <header class="header">
+        <!-- Logo link updated to scroll to top -->
+        <a href="#top" class="header-logo">Portfolio</a>
+
+        <div class="menu-toggle" id="menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <nav>
+            <!-- Navigation links use local anchors for single-page scrolling -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#top">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="content">
+
+        <!-- 1. Hero Container: Slideshow Background + Profile/Welcome Content -->
+        <section class="hero-container" id="hero-slideshow">
+
+            <!-- Background Slideshow Images - Using Django static tags -->
+            <img src="{% static 'main_app/images/coding_1.jpg' %}" onerror="this.src='https://placehold.co/1920x1080/0f0f0f/ffffff?text=Coding+Background+1'" alt="Code snippet 1" class="slideshow-image active">
+            <img src="{% static 'main_app/images/coding_2.jpg' %}" onerror="this.src='https://placehold.co/1920x1080/0f0f0f/ffffff?text=Coding+Background+2'" alt="Code snippet 2" class="slideshow-image">
+            <img src="{% static 'main_app/images/coding_3.jpg' %}" onerror="this.src='https://placehold.co/1920x1080/0f0f0f/ffffff?text=Coding+Background+3'" alt="Code snippet 3" class="slideshow-image">
+            <img src="{% static 'main_app/images/coding_4.jpg' %}" onerror="this.src='https://placehold.co/1920x1080/0f0f0f/ffffff?text=Coding+Background+4'" alt="Code snippet 4" class="slideshow-image">
+            <img src="{% static 'main_app/images/coding_5.jpg' %}" onerror="this.src='https://placehold.co/1920x1080/0f0f0f/ffffff?text=Coding+Background+5'" alt="Code snippet 5" class="slideshow-image">
+
+            <!-- Foreground Content Overlay -->
+            <div class="hero-content-overlay">
+                <!-- Left Side: Text -->
+                <div class="hero-text" id="hero-text-area">
+                    <h1 id="hero-h1">Hi, I'm Gokul.</h1>
+                    <h2 id="hero-h2">Welcome to My Portfolio</h2>
+                    <p id="hero-p">Passionate about crafting elegant and powerful web experiences using Python and Django. Turning ideas into smooth, scalable, and visually stunning applications.</p>
+                </div>
+
+                <!-- Right Side: Profile Picture (Static and Interactive) -->
+                <div class="profile-pic-wrapper">
+                    <div class="profile-pic-container profile-interactive" tabindex="0" role="button" aria-label="Gokul's Profile Picture, click to zoom">
+                        <img src="{% static 'main_app/images/gokul.jpeg' %}" onerror="this.src='https://placehold.co/250x250/1E40AF/ffffff?text=Gokul+Prasanth'" alt="Gokul's Profile Picture" class="profile-pic">
+                    </div>
+                    <span class="experience-badge" tabindex="0" role="tooltip" aria-label="Experience: 2+ years">
+                        2+ years experience
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. About Section -->
+        <section id="about" class="page-section text-center">
+            <h3 class="reveal-on-scroll">About Me</h3>
+            <div class="about-description-container reveal-on-scroll">
+                <p class="about-description">I am a passionate developer with a strong focus on <b class="text-indigo-400">Python</b> and the <b class="text-indigo-400">Django</b> framework. I excel at translating complex requirements into clean, efficient, and scalable web applications. My expertise includes <b class="text-indigo-400">REST APIs</b>, database design, and front-end integration.</p>
+                <p class="about-description">I believe in continuous learning and enjoy exploring new technologies to deliver high-quality, maintainable code. My goal is to create impactful solutions that are intuitive and robust.</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card reveal-on-scroll">
+                    <div class="stat-number">2+</div>
+                    <div class="stat-label">Experience (Years)</div>
+                </div>
+                <div class="stat-card reveal-on-scroll">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Projects (Completed)</div>
+                </div>
+                <div class="stat-card reveal-on-scroll">
+                    <div class="stat-number">7+</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat-card reveal-on-scroll">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Technologies (Mastered)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Projects Section (CAROUSEL HTML STRUCTURE) -->
+        <section id="projects" class="page-section">
+            <h3 class="text-center reveal-on-scroll">My Projects</h3>
+
+            <!-- Horizontal Carousel Container -->
+            <div class="relative">
+                <div id="carousel" class="projects-grid">
+
+                    <!-- Project 1: PDF Automation Tool -->
+                    <div class="project-card reveal-on-scroll">
+                        <div class="project-image">
+                            <img src="https://placehold.co/350x200/4f46e5/e5e7eb?text=PDF+Automation+Tool"
+                                 alt="PDF Automation Tool"
+                                 onerror="this.src='https://placehold.co/350x200/4f46e5/e5e7eb?text=PDF+Automation+Tool';">
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <h4 class="project-title">PDF Automation System</h4>
+                                <p class="project-description">
+                                    A high-precision PDF processing tool built with Python & PyMuPDF
+                                    for generating client letters, RTO letters, QC samples,
+                                    barcode overlay, and mass page-level manipulations.
+                                </p>
+                            </div>
+
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">PyMuPDF</span>
+                                <span class="tech-tag">Tkinter</span>
+                                <span class="tech-tag">File Handling</span>
+                            </div>
+
+                            <div class="project-links">
+                                <a href="#" target="_blank">
+                                    <svg data-lucide="github" class="w-5 h-5"></svg> Code
+                                </a>
+                                <a href="#" target="_blank">
+                                    <svg data-lucide="monitor" class="w-5 h-5"></svg> Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Playwright Web Scraper / PDF Generator -->
+                    <div class="project-card reveal-on-scroll" style="transition-delay: .1s;">
+                        <div class="project-image">
+                            <img src="https://placehold.co/350x200/e5e7eb/0f0f0f?text=Playwright+Automation"
+                                 alt="Playwright Automation Project"
+                                 onerror="this.src='https://placehold.co/350x200/e5e7eb/0f0f0f?text=Playwright+Automation';">
+                        </div>
+
+                        <div class="project-content">
+                            <div>
+                                <h4 class="project-title">Playwright Auto PDF Generator</h4>
+                                <p class="project-description">
+                                    Automated system using Playwright to hit third-party URLs,
+                                    extract full HTML content, and convert them into styled
+                                    PDFs for bulk operations with full headless automation.
+                                </p>
+                            </div>
+
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">Playwright</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Async Automation</span>
+                            </div>
+
+                            <div class="project-links">
+                                <a href="#" target="_blank">
+                                    <svg data-lucide="github" class="w-5 h-5"></svg> Code
+                                </a>
+                                <a href="#" target="_blank">
+                                    <svg data-lucide="monitor" class="w-5 h-5"></svg> Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Django Applications Suite -->
+                    <div class="project-card reveal-on-scroll" style="transition-delay: .2s;">
+                        <div class="project-image">
+                            <img src="https://placehold.co/350x200/4f46e5/e5e7eb?text=Django+Apps"
+                                 alt="Django Application Suite"
+                                 onerror="this.src='https://placehold.co/350x200/4f46e5/e5e7eb?text=Django+Apps';">
+                        </div>
+
+                        <div class="project-content">
+                            <div>
+                                <h4 class="project-title">Django Application Suite</h4>
+                                <p class="project-description">
+                                    Collection of production-ready Django apps including
+                                    authentication systems, dashboards, API integrations,
+                                    currency converters, admin utilities and automation modules.
+                                </p>
+                            </div>
+
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">Django</span>
+                                <span class="tech-tag">DRF</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Tailwind</span>
+                            </div>
+
+                            <div class="project-links">
+                                <a href="#" target="_blank">
+                                    <svg data-lucide="github" class="w-5 h-5"></svg> Code
+                                </a>
+                                <a href="#" target="_blank">
+                                    <svg data-lucide="monitor" class="w-5 h-5"></svg> Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Background Windows Service Automation -->
+                    <div class="project-card reveal-on-scroll" style="transition-delay: .3s;">
+                        <div class="project-image">
+                            <img src="https://placehold.co/350x200/e5e7eb/0f0f0f?text=Windows+Service"
+                                 alt="Windows Service Tool"
+                                 onerror="this.src='https://placehold.co/350x200/e5e7eb/0f0f0f?text=Windows+Service';">
+                        </div>
+
+                        <div class="project-content">
+                            <div>
+                                <h4 class="project-title">Windows Service Processor</h4>
+                                <p class="project-description">
+                                    A continuous running Windows background service that processes
+                                    large incoming files, allocates AWBs, validates PDF names,
+                                    auto-generates MIS reports and distributes output letters.
+                                </p>
+                            </div>
+
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Windows Service</span>
+                                <span class="tech-tag">File Watcher</span>
+                                <span class="tech-tag">Automation</span>
+                            </div>
+
+                            <div class="project-links">
+                                <a href="#" target="_blank">
+                                    <svg data-lucide="github" class="w-5 h-5"></svg> Code
+                                </a>
+                                <a href="#" target="_blank">
+                                    <svg data-lucide="monitor" class="w-5 h-5"></svg> Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <div class="carousel-controls">
+                <button id="nav-left" class="carousel-nav-button" aria-label="Scroll Left">
+                    <svg data-lucide="arrow-left" class="w-6 h-6"></svg>
+                </button>
+                <div id="dots-container" class="dots-container"></div>
+                <button id="nav-right" class="carousel-nav-button" aria-label="Scroll Right">
+                    <svg data-lucide="arrow-right" class="w-6 h-6"></svg>
+                </button>
+            </div>
+        </section>
+
+
+        <!-- 4. SKILLS & EXPERTISE SECTION -->
+        <section id="skills" class="page-section">
+            <h3 class="reveal-on-scroll">Skills & Expertise</h3>
+            <div class="skills-grid">
+
+                <!-- Card 1: Frontend Development (SLIDE LEFT) -->
+                <article class="skill-card reveal-on-scroll slide-left-reveal">
+                    <div class="skill-header">
+                        <i data-lucide="code" class="skill-main-icon"></i>
+                        <h4>Frontend Development</h4>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i data-lucide="chevron-right"></i><span>HTML</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>CSS</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>JavaScript</span></li>
+                    </ul>
+                </article>
+
+                <!-- Card 2: Backend Development (SLIDE LEFT) -->
+                <article class="skill-card secondary-bg-card reveal-on-scroll slide-left-reveal">
+                    <div class="skill-header">
+                        <i data-lucide="server" class="skill-main-icon"></i>
+                        <h4>Backend Development</h4>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i data-lucide="chevron-right"></i><span>Python</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>Django</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>Tkinter</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>Windows Service</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>API Integration</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>PDF Automation & Processing</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>Multithreading / File Handling</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>Courier Automation Logic</span></li>
+                    </ul>
+                </article>
+
+                <!-- Card 3: Tools & Databases (SLIDE RIGHT) -->
+                <article class="skill-card reveal-on-scroll slide-right-reveal">
+                    <div class="skill-header">
+                        <i data-lucide="tool-box" class="skill-main-icon"></i>
+                        <h4>Tools & Databases</h4>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i data-lucide="chevron-right"></i><span>Git & GitHub</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>PostgreSQL</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>MySQL</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>VS Code</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>Linux / WSL</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>Postman</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>PyMuPDF (fitz)</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>OpenAI API</span></li>
+                    </ul>
+                </article>
+
+                <!-- Card 4: Soft Skills (SLIDE RIGHT) -->
+                <article class="skill-card secondary-bg-card reveal-on-scroll slide-right-reveal">
+                    <div class="skill-header">
+                        <i data-lucide="lightbulb" class="skill-main-icon"></i>
+                        <h4>Soft Skills</h4>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i data-lucide="chevron-right"></i><span>Problem Solving</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>Communication</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>Team Leadership</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>Time Management</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>Debugging Mindset</span></li>
+                        <li><i data-lucide="chevron-right"></i><span>Quick Learning</span></li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- 5. Contact Section -->
+        <section id="contact" class="page-section text-center">
+            <h3 class="reveal-on-scroll">Get In Touch</h3>
+            <div class="contact-grid">
+
+                <!-- Left Column: Contact Information Card -->
+                <div class="contact-card reveal-on-scroll slide-left">
+                    <h4>Contact Information</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i data-lucide="user-round"></i>
+                            <span>Gokul Prasanth</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="phone"></i>
+                            <span>+91 88258 36735</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="mail"></i>
+                            <span>gokulvfc33@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="map-pin"></i>
+                            <span>Chennai, India</span>
+                        </div>
+                    </div>
+
+                    <div class="social-links-container">
+                        <a href="https://github.com/Gokulprasanth1905" target="_blank" aria-label="GitHub Profile" class="social-icon">
+                            <i data-lucide="github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/__gokul.prasanth__?igsh=MWdlczAwZmxnY3A4dA%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram Profile" class="social-icon">
+                            <i data-lucide="instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/gokul-prasanth-a793b7184/" target="_blank" aria-label="LinkedIn Profile" class="social-icon">
+                            <i data-lucide="linkedin"></i>
+                        </a>
+                        <a href="mailto:gokulprasanth2196@gmail.com" target="_blank" aria-label="Gmail Profile" class="social-icon">
+                            <i data-lucide="mail"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Send Message Form Card -->
+                <div class="contact-card form-card reveal-on-scroll slide-right">
+                    <h4>Send a Message</h4>
+                    <!-- Note: Form is a mockup as backend is not available -->
+                    <form id="contact-form" class="message-form" onsubmit="event.preventDefault(); document.getElementById('form-message').style.display='block';">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="text" name="subject" placeholder="Subject" required>
+                        <textarea name="message" rows="5" placeholder="Your Message..." required></textarea>
+
+                        <button type="submit" class="submit-button">Send Message</button>
+
+                        <p id="form-message" style="display:none; margin-top: 1rem; color: var(--accent-color);">Thank you! Your message has been sent.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer class="main-footer">
+            <p>&copy; 2025 Gokulprasanth's Portfolio. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Link to the external JavaScript file using Django static tag -->
+    <script src="{% static 'main_app/script.js' %}"></script>
+    <!-- Lucide Icon rendering -->
+    <script>
+        // Ensure Lucide icons are rendered after the script loads
+        lucide.createIcons();
+    </script>
+</body>
+</html>
